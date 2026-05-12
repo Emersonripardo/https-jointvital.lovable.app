@@ -1,1 +1,614 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Complete Joint Care</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0b1f4b;
+      --blue: #1a3a8a;
+      --green: #16a34a;
+      --green-light: #22c55e;
+      --gold: #f59e0b;
+      --cream: #f8f5f0;
+      --gray: #6b7280;
+      --light: #f1f5f9;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #fff;
+      color: #111827;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+
+    .container { width: 90%; max-width: 1200px; margin: auto; }
+
+    /* ── ANNOUNCEMENT BAR ── */
+    .topbar {
+      background: var(--navy);
+      color: #fff;
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+    .topbar span { color: var(--gold); font-weight: 600; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, #2563eb 100%);
+      color: white;
+      padding: 90px 0 70px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(34,197,94,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-text { flex: 1; min-width: 300px; }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #bfdbfe;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 {
+      font-size: 54px;
+      line-height: 1.1;
+      margin-bottom: 22px;
+      color: #fff;
+    }
+    .hero-text h1 em {
+      font-style: normal;
+      color: #86efac;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      color: #bfdbfe;
+      margin-bottom: 36px;
+      max-width: 540px;
+    }
+
+    .hero-cta-group { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
+      color: white;
+      text-decoration: none;
+      padding: 18px 36px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      box-shadow: 0 8px 30px rgba(34,197,94,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(34,197,94,0.5);
+    }
+
+    .guarantee-note {
+      font-size: 13px;
+      color: #93c5fd;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-image {
+      flex: 1;
+      text-align: center;
+      min-width: 280px;
+    }
+    .hero-image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 24px;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+    }
+    .product-placeholder {
+      width: 100%;
+      max-width: 400px;
+      height: 420px;
+      background: rgba(255,255,255,0.08);
+      border: 2px dashed rgba(255,255,255,0.25);
+      border-radius: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 14px;
+      gap: 10px;
+      margin: auto;
+    }
+    .product-placeholder svg { opacity: 0.4; }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--cream);
+      padding: 28px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .trust-items {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--navy);
+    }
+    .trust-item svg { color: var(--green); }
+
+    /* ── BENEFITS ── */
+    .benefits {
+      padding: 100px 0;
+      background: #fff;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-title h2 { font-size: 42px; color: var(--navy); margin-bottom: 14px; }
+    .section-title p { color: var(--gray); font-size: 18px; max-width: 600px; margin: auto; }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .benefit-card {
+      background: var(--light);
+      padding: 36px 30px;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+    }
+    .benefit-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, #dbeafe, #eff6ff);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+      font-size: 24px;
+    }
+    .benefit-card h3 { font-size: 20px; color: var(--navy); margin-bottom: 10px; font-family: 'DM Sans', sans-serif; font-weight: 600; }
+    .benefit-card p { color: var(--gray); font-size: 15px; }
+
+    /* ── HOW IT WORKS ── */
+    .how {
+      padding: 100px 0;
+      background: linear-gradient(135deg, #eef2ff 0%, #f0fdf4 100%);
+    }
+    .how-content {
+      display: flex;
+      gap: 70px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .how-image, .how-text { flex: 1; min-width: 300px; }
+    .how-image img { width: 100%; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
+
+    .how-text h2 { font-size: 44px; color: var(--navy); margin-bottom: 24px; }
+    .how-text p { color: #374151; margin-bottom: 18px; font-size: 17px; }
+
+    .steps { margin: 30px 0 40px; display: flex; flex-direction: column; gap: 18px; }
+    .step { display: flex; align-items: flex-start; gap: 16px; }
+    .step-num {
+      width: 36px; height: 36px; min-width: 36px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 15px;
+    }
+    .step-text strong { display: block; color: var(--navy); font-weight: 600; margin-bottom: 2px; }
+    .step-text span { color: var(--gray); font-size: 15px; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { padding: 100px 0; background: #fff; }
+    .testimonials .section-title h2 { color: var(--navy); }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--cream);
+      padding: 32px;
+      border-radius: 20px;
+      border-left: 4px solid var(--green-light);
+    }
+    .stars { color: var(--gold); font-size: 18px; margin-bottom: 14px; }
+    .testimonial-card p { color: #374151; font-size: 15px; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+    .reviewer { display: flex; align-items: center; gap: 12px; }
+    .reviewer-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 700; font-size: 16px;
+    }
+    .reviewer-name { font-weight: 600; color: var(--navy); font-size: 15px; }
+    .reviewer-loc { font-size: 13px; color: var(--gray); }
+
+    /* ── GUARANTEE ── */
+    .guarantee {
+      padding: 80px 0;
+      background: var(--navy);
+      color: white;
+      text-align: center;
+    }
+    .guarantee-box {
+      max-width: 700px;
+      margin: auto;
+    }
+    .guarantee-shield {
+      width: 90px; height: 90px;
+      background: rgba(34,197,94,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 40px;
+    }
+    .guarantee-box h2 { font-size: 38px; margin-bottom: 16px; }
+    .guarantee-box p { color: #94a3b8; font-size: 17px; margin-bottom: 36px; }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      padding: 100px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #052e16 0%, #14532d 100%);
+      color: white;
+    }
+    .cta-section h2 { font-size: 46px; margin-bottom: 18px; }
+    .cta-section p { max-width: 620px; margin: auto auto 40px; color: #bbf7d0; font-size: 18px; }
+
+    .urgency {
+      display: inline-block;
+      background: rgba(245,158,11,0.2);
+      border: 1px solid rgba(245,158,11,0.4);
+      color: var(--gold);
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 30px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #020617;
+      color: #64748b;
+      padding: 50px 20px 30px;
+      text-align: center;
+      font-size: 13px;
+    }
+    footer p { margin-bottom: 12px; max-width: 700px; margin-left: auto; margin-right: auto; }
+    footer .footer-links { margin: 20px 0 30px; }
+    footer .footer-links a {
+      color: #94a3b8;
+      margin: 0 12px;
+      text-decoration: none;
+      font-size: 13px;
+    }
+    footer .footer-links a:hover { color: #fff; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.25s; }
+    .delay-3 { animation-delay: 0.4s; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width: 768px) {
+      .hero-text h1 { font-size: 36px; }
+      .section-title h2, .how-text h2, .cta-section h2 { font-size: 30px; }
+      .hero { padding: 60px 0 50px; }
+      .benefits, .how, .testimonials, .guarantee, .cta-section { padding: 70px 0; }
+      .trust-items { gap: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="topbar">
+    🎉 Limited Time: <span>Free Shipping</span> on all orders today only
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-content">
+
+      <div class="hero-text fade-up">
+        <div class="badge">🌿 Natural Joint Support</div>
+        <h1>Move Freely.<br><em>Live Fully.</em></h1>
+        <p>
+          Complete Joint Care is formulated to support joint comfort,
+          flexibility, and mobility — so you never have to slow down.
+        </p>
+        <div class="hero-cta-group">
+          <a href="https://completejointcare.net/cb/" class="cta-btn" target="_blank">
+            Access Official Website →
+          </a>
+          <div class="guarantee-note">
+            🔒 60-day money-back guarantee
+          </div>
+        </div>
+      </div>
+
+     <img
+  src="jointgenesis.png"
+  alt="Joint Genesis Supplement"
+/>
+        <!-- When you have the image, replace the div above with:
+        <img src="YOUR-PRODUCT-IMAGE.png" alt="Complete Joint Care Supplement" /> -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-items">
+        <div class="trust-item">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Natural Ingredients
+        </div>
+        <div class="trust-item">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Made in the USA
+        </div>
+        <div class="trust-item">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          GMP Certified
+        </div>
+        <div class="trust-item">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          60-Day Guarantee
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BENEFITS -->
+  <section class="benefits">
+    <div class="container">
+      <div class="section-title">
+        <h2>Why People Love Complete Joint Care</h2>
+        <p>A simple daily routine designed to support movement, comfort, and an active life.</p>
+      </div>
+      <div class="benefit-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🦵</div>
+          <h3>Joint Comfort</h3>
+          <p>Supports daily joint comfort and flexibility with carefully selected natural ingredients.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🏃</div>
+          <h3>Active Lifestyle</h3>
+          <p>Helps you stay active and move more comfortably throughout the day.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📅</div>
+          <h3>Daily Support</h3>
+          <p>Easy-to-use formula designed to fit seamlessly into your everyday wellness routine.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🔬</div>
+          <h3>Trusted Formula</h3>
+          <p>Crafted with premium, science-backed ingredients for reliable joint support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <div class="container how-content">
+
+      <div class="how-image">
+        <img
+          src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200&auto=format&fit=crop"
+          alt="Healthy Movement"
+        />
+      </div>
+
+      <div class="how-text">
+        <h2>Feel Better Every Single Day</h2>
+        <p>
+          Complete Joint Care was designed to support flexibility, mobility, and
+          overall joint wellness as part of your daily routine — from morning walks
+          to evening workouts.
+        </p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text">
+              <strong>Take Daily</strong>
+              <span>Simple once-daily formula that fits into any routine.</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-text">
+              <strong>Feel the Difference</strong>
+              <span>Notice improved comfort and mobility within weeks.</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text">
+              <strong>Stay Active</strong>
+              <span>Keep doing what you love — pain-free and with confidence.</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://completejointcare.net/cb/" class="cta-btn" target="_blank">
+          Claim Today's Offer →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>Real People, Real Results</h2>
+        <p>Join thousands of satisfied customers who've made Complete Joint Care part of their life.</p>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"I've been using this for 3 months and the difference in my knees is incredible. I can finally walk my dog every morning without dreading the pain."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">M</div>
+            <div>
+              <div class="reviewer-name">Margaret T.</div>
+              <div class="reviewer-loc">Florida, USA</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"After years of searching, I finally found something that actually helps. My joints feel so much better and I'm back to playing golf on weekends."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">R</div>
+            <div>
+              <div class="reviewer-name">Robert L.</div>
+              <div class="reviewer-loc">Texas, USA</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"My doctor was impressed by my progress. I wake up without that stiffness I used to have. This product has genuinely changed my daily life."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">S</div>
+            <div>
+              <div class="reviewer-name">Sandra K.</div>
+              <div class="reviewer-loc">California, USA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUARANTEE -->
+  <section class="guarantee">
+    <div class="container">
+      <div class="guarantee-box">
+        <div class="guarantee-shield">🛡️</div>
+        <h2>60-Day Money-Back Guarantee</h2>
+        <p>
+          We stand behind our product 100%. If you're not completely satisfied within
+          60 days, we'll refund your purchase — no questions asked.
+        </p>
+        <a href="https://completejointcare.net/cb/" class="cta-btn" target="_blank">
+          Try Risk-Free Today →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="urgency">⚡ Limited Stock Available — Order Now</div>
+    <h2>Start Supporting Your Joints Today</h2>
+    <p>
+      Discover why thousands of people are adding Complete Joint Care
+      to their daily wellness routine.
+    </p>
+    <a href="https://completejointcare.net/cb/" class="cta-btn" target="_blank">
+      Access Official Website →
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      *These statements have not been evaluated by the Food and Drug Administration.
+      This product is not intended to diagnose, treat, cure, or prevent any disease.
+      Results may vary. Individual results are not guaranteed.
+    </p>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms.html">Terms & Conditions</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>Copyright © 2026 Complete Joint Care. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
